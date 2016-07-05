@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 29, 2016 9:03:02 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="uet.jcia.shop.is.entities.Category" table="CATEGORY">
+        <id name="categoryId" type="java.lang.Integer">
+            <column name="CATEGORY_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="parentId" type="java.lang.Integer">
+            <column name="PARENT_ID" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        
+        <set name="products" table="product" inverse="true">
+        	<key column="category_id"/>
+        	<one-to-many class="uet.jcia.shop.is.entities.Product"/>
+        </set>
+    </class>
+</hibernate-mapping>

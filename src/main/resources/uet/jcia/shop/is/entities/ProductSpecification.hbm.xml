@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 29, 2016 8:56:09 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="uet.jcia.shop.is.entities.ProductSpecification" table="product_to_spec">
+        <id name="productSpecId" type="java.lang.Integer">
+            <column name="product_spec_id" />
+            <generator class="increment" />
+        </id>
+        
+        <property name="specName" type="java.lang.String">
+            <column name="spec_name" />
+        </property>
+        
+        <property name="value" type="java.lang.String">
+            <column name="value" />
+        </property>
+        
+        <many-to-one name="product" class="uet.jcia.shop.is.entities.Product">
+            <column name="product_id" not-null="true"/>
+        </many-to-one>
+        
+        <many-to-one name="spec" class="uet.jcia.shop.is.entities.Specification">
+            <column name="spec_id" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
