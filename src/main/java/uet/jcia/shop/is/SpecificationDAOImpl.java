@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Product;
 import uet.jcia.shop.is.entities.Specification;
@@ -16,8 +16,8 @@ public class SpecificationDAOImpl implements SpecificationDAO {
     public List<Specification> getAllSpecs() {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         try {
-            Query query = session.createQuery("from Specification");
-            return query.list();
+          
+            return  session.createQuery("from Specification").list();
             
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class SpecificationDAOImpl implements SpecificationDAO {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
-            Specification s = session.get(Specification.class, spec.getSpecId());
+            Specification s = (Specification)session.get(Specification.class, spec.getSpecId());
             session.delete(s);
             tx.commit();
             return true;
@@ -62,7 +62,7 @@ public class SpecificationDAOImpl implements SpecificationDAO {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
-            Specification s = session.load(
+            Specification s = (Specification)session.load(
                    Specification.class, updatedSpec.getSpecId());
             
             s = updatedSpec;
@@ -82,7 +82,7 @@ public class SpecificationDAOImpl implements SpecificationDAO {
     public Specification getSpec(Specification spec) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         try {
-            return session.get(Specification.class, spec.getSpecId());
+            return (Specification)session.get(Specification.class, spec.getSpecId());
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;

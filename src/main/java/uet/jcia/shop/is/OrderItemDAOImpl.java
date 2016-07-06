@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Order;
 import uet.jcia.shop.is.entities.OrderItem;
@@ -19,9 +19,8 @@ public class OrderItemDAOImpl implements OrderItemDAO {
 		try{
 			 String hql = "from OrderItem";
 			 String hql2 = "select ot from OrderItem ot , Order od WHERE od.orderId = :order_id";
-			 Query<OrderItem> query = session.createQuery(hql2);
-			 query.setParameter("order_id", order_id);
-			 result = (List<OrderItem>)query.getResultList();
+			  
+			 result = (List<OrderItem>)session.createQuery(hql2).setParameter("order_id", order_id).list();
 			 session.getTransaction().commit();
 			 
 		}

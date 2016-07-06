@@ -1,7 +1,7 @@
 package uet.jcia.shop.is;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Specification;
 

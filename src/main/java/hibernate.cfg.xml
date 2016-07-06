@@ -42,5 +42,6 @@
 	   <mapping resource="uet/jcia/shop/is/entities/Product.hbm.xml"/>
 	   <mapping resource="uet/jcia/shop/is/entities/OrderItem.hbm.xml"/>
 	   <mapping resource="uet/jcia/shop/is/entities/Specification.hbm.xml"/>
+	   <mapping resource="uet/jcia/shop/is/entities/ProductSpecification.hbm.xml"/>
    </session-factory>
 </hibernate-configuration>

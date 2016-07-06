@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Category;
 
@@ -15,8 +15,8 @@ public class CategoryDAOImpl implements CategoryDAO {
     public List<Category> getAllCategories() {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         try {
-            Query query = session.createQuery("from Category");
-            return query.list();
+             
+            return session.createQuery("from Category").list();
             
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     public Category getCategory(Category category) {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         try {
-            return session.get(
+            return (Category)session.get(
                     Category.class, category.getCategoryId());
             
         } catch (HibernateException e) {
@@ -74,7 +74,7 @@ public class CategoryDAOImpl implements CategoryDAO {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
-            Category c = session.load(Category.class, updatedCategory.getCategoryId());
+            Category c = (Category)session.load(Category.class, updatedCategory.getCategoryId());
             
             c.setParentId(updatedCategory.getParentId());
             c.setName(updatedCategory.getName());

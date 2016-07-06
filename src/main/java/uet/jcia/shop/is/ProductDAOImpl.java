@@ -6,7 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Product;
 import uet.jcia.shop.is.entities.ProductSpecification;
@@ -29,7 +29,7 @@ public class ProductDAOImpl implements ProductDAO {
     public Product getProduct(Product product) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         try {
-            return session.get(Product.class, product.getProductId());
+            return (Product)session.get(Product.class, product.getProductId());
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;
@@ -57,7 +57,7 @@ public class ProductDAOImpl implements ProductDAO {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
-            Product p = session.get(Product.class, product.getProductId());
+            Product p = (Product)session.get(Product.class, product.getProductId());
             session.delete(p);
             tx.commit();
             return true;
@@ -74,7 +74,7 @@ public class ProductDAOImpl implements ProductDAO {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
-            Product p = session.load(
+            Product p = (Product)session.load(
                    Product.class, uProduct.getProductId());
             
             p = uProduct;

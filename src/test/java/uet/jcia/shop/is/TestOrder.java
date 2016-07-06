@@ -8,7 +8,7 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Customer;
 import uet.jcia.shop.is.entities.Order;
@@ -24,22 +24,22 @@ public class TestOrder {
         
         String cSql = "select c from " + Customer.class.getName() +
                 " c where c.customerId=:id";
-        Query cQuery = session.createQuery(cSql);
-        cQuery.setParameter("id", 1);
+//        Query cQuery = session.createQuery(cSql);
+//        cQuery.setParameter("id", 1);
         
         String pSql = "select p from " + Product.class.getName() +
                 " p where p.productId=:id";
-        Query pQuery = session.createQuery(pSql);
-        pQuery.setParameter("id", 1);
-        
+//        Query pQuery = session.createQuery(pSql);
+//        pQuery.setParameter("id", 1);
+//        
         String oSql = "select o from " + Order.class.getName() +
                 " o";
-        Query oQuery = session.createQuery(oSql);
-        
-        Customer customer = (Customer) cQuery.getSingleResult();
-        Product product = (Product) pQuery.getSingleResult();
-        
-        System.out.println(oQuery.list());
+//        Query oQuery = session.createQuery(oSql);
+//        
+//        Customer customer = (Customer) cQuery.getSingleResult();
+//        Product product = (Product) pQuery.getSingleResult();
+//        
+//        System.out.println(oQuery.list());
         
 //        Order order = new Order(
 //                customer.getFirstName(), customer.getLastName(), customer.getTelephone(),

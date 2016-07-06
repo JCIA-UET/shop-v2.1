@@ -8,15 +8,14 @@ import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
+
 
 import uet.jcia.shop.is.entities.Customer;
 import uet.jcia.shop.is.entities.Order;
 
 public class OrderDAOImpl implements OrderDao {
 
-	private NativeQuery<Order> addEntity;
+
 
 	@Override
 	public List<Order> getAllOrder() {
@@ -26,8 +25,7 @@ public class OrderDAOImpl implements OrderDao {
         
 		try {
 			String cHql= "from Order";
-			Query<Order> cQuery = session.createQuery(cHql);
-			listOrder = cQuery.list();
+			listOrder = session.createQuery(cHql).list();
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -46,7 +44,7 @@ public class OrderDAOImpl implements OrderDao {
 		session.beginTransaction();
 		Order order = null;
 		try{
-			order = session.load(Order.class, orderId);
+			order = (Order)session.load(Order.class, orderId);
 			Hibernate.initialize(order);
 			session.getTransaction().commit();
 		}
@@ -116,7 +114,7 @@ public class OrderDAOImpl implements OrderDao {
 		if(order == null) return  false;
 		try{
 			 org.hibernate.Transaction tx1 = session.beginTransaction();
-			 Order orderGet = session.load(Order.class, orderId);
+			 Order orderGet =(Order) session.load(Order.class, orderId);
 			 Hibernate.initialize(orderGet);
 			 tx1.commit();
 			 
@@ -162,9 +160,8 @@ public class OrderDAOImpl implements OrderDao {
 		List<Order> result = null;
 		try{
 			String hql = "select o from Order o , Customer c Where c.customerId = :customer_id";
-			Query<Order> query = session.createQuery(hql);
-			query.setParameter("customer_id", customer_id);
-			result = (List<Order>) query.getResultList();
+			 ;
+			result = (List<Order>) session.createQuery(hql).setParameter("customer_id", customer_id).list();
 			session.getTransaction().commit();
 		}
 		catch(HibernateException e){
