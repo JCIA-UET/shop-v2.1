@@ -15,7 +15,7 @@ public interface User {
 	Address getAddressById(Integer addressId);
 	
 	@WebMethod
-	List<Address> getAddressesList();
+	List<Address> getAllAddresses();
 	
 	@WebMethod
 	void addNewAddress(Address address);
@@ -42,7 +42,7 @@ public interface User {
 	void deleteCustomer(Customer customer);
 	
 	@WebMethod
-	List<Address> getAddressesList(Customer customer);
+	List<Address> getAddressesByCustomer(Customer customer);
 	
 	@WebMethod
 	List<Order> getOrdersList(Customer customer);

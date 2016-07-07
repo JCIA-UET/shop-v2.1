@@ -33,9 +33,17 @@ public class UserImpl implements User{
 		cusList = customerDAO.getAllCustomer();
 		return cusList.toString();
 	}
+	
+	@Override
+	public List<Address> getAllAddresses() {
+		// TODO Auto-generated method stub
+		List<Address> addsList = null;
+		addsList = addressDAO.getAllAddress();
+		return addsList;
+	}
 
 	@Override
-	public List<Address> getAddressesList(Customer customer) {
+	public List<Address> getAddressesByCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		List<Address> addsList = null;
 		addsList.addAll(customer.getAddresses());
@@ -56,14 +64,6 @@ public class UserImpl implements User{
 		Address address = null;
 		address = addressDAO.getAddressById(addressId);
 		return address;
-	}
-
-	@Override
-	public List<Address> getAddressesList() {
-		// TODO Auto-generated method stub
-		List<Address> addsList = null;
-		addsList.addAll(addressDAO.getAllAddress());
-		return addsList;
 	}
 
 	@Override
