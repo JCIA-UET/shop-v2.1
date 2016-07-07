@@ -2,8 +2,13 @@
 
 import java.util.Date;
 import java.util.Set;
+import java.io.Serializable;
 
-public class Product {
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
+public class Product implements Serializable{
     private Integer productId;
     private Integer quantity;
     private Integer status;
@@ -22,6 +27,7 @@ public class Product {
     private Set<ProductSpecification> productSpecs;
     private Set<OrderItem> orderItems;
     
+    @XmlTransient
     public Set<OrderItem> getOrderItems() {
 		return orderItems;
 	}
@@ -62,6 +68,7 @@ public class Product {
 		this.category = category;
 	}
 
+    @XmlTransient
 	public Category getCategory() {
 		return category;
 	}
@@ -69,7 +76,8 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	
+	@XmlTransient
 	public Set<ProductSpecification> getProductSpecs() {
 		return productSpecs;
 	}

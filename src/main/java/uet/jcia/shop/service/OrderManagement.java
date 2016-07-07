@@ -1,5 +1,6 @@
 package uet.jcia.shop.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -16,4 +17,5 @@ public interface OrderManagement {
 	@WebMethod public Order getOrderById(int id);
 	@WebMethod public boolean deleteOrderById(int id);
 	@WebMethod public boolean updateOrder(int orderId, Order order);
+	@WebMethod public List<Order> getListOrderByDate(Date date);
 }

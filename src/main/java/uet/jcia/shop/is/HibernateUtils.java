@@ -9,7 +9,8 @@ public class HibernateUtils {
             new Configuration().configure("/hibernate.cfg.xml");
     private static SessionFactory sessionFactory;
     
-    public static SessionFactory buildSessionFactory() {
+    @SuppressWarnings("deprecation")
+	public static SessionFactory buildSessionFactory() {
         sessionFactory = configuration.buildSessionFactory();
         return sessionFactory;
     }

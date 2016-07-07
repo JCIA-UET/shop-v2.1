@@ -1,10 +1,14 @@
 package uet.jcia.shop.is.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-public class Customer {
+@XmlRootElement
+public class Customer implements Serializable{
 	private Integer customerId;
 	private String firstName;
 	private String lastName;
@@ -31,6 +35,7 @@ public class Customer {
 		this.dateAdded = dateAdded;
 	}
 	
+	@XmlTransient
 	public Set<Address> getAddresses() {
 	    return addresses;
 	}
@@ -39,6 +44,7 @@ public class Customer {
 	    this.addresses = addresses;
 	}
 	
+	@XmlTransient
 	public Set<Order> getOrders() {
         return orders;
     }

@@ -26,10 +26,13 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product getProduct(Product product) {
+    public Product getProductById(Integer productId) {
         Session session = HibernateUtils.getSessionFactory().openSession();
+        Product p = null;
         try {
-            return (Product)session.get(Product.class, product.getProductId());
+            p = (Product)session.get(Product.class, productId);
+            session.close();
+            return p;
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;
@@ -109,7 +112,7 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<ProductSpecification> getSpecValuesForProduct(Product product) {
         List<ProductSpecification> list = new ArrayList<>();
-        list.addAll(getProduct(product).getProductSpecs());
+        list.addAll(product.getProductSpecs());
         return list;
     }
     

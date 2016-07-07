@@ -25,7 +25,7 @@ public class PrdToSpecHbmTest {
         
         Product p = new Product();
         p.setProductId(1);
-        p = pDao.getProduct(p);
+        p = pDao.getProductById(1);
         
         Specification s = new Specification();
         s.setSpecId(1);

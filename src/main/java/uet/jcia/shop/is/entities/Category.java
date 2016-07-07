@@ -1,8 +1,13 @@
 package uet.jcia.shop.is.entities;
 
 import java.util.Set;
+import java.io.Serializable;
 
-public class Category {
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
+public class Category implements Serializable{
 	private Integer categoryId;
 	private Integer parentId;
 	private String name;
@@ -10,6 +15,7 @@ public class Category {
 	
 	private Set<Product> products;
 	
+	@XmlTransient
 	public Set<Product> getProducts() {
 		return products;
 	}

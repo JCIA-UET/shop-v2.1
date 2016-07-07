@@ -7,8 +7,8 @@ import uet.jcia.shop.is.entities.OrderItem;
 
 public interface OrderItemDAO {
 	List<OrderItem> getOrderItemByOrderId(int orderId);
-	boolean addNewOrderItem(OrderItemDAO item);
-	boolean deleteOrderItem(OrderItemDAO item);
-	boolean updateOrderItem(OrderItemDAO item);
-	boolean isOrderHasItem(Order order, OrderItemDAO item);
+	boolean addNewOrderItem(OrderItem item);
+	boolean deleteOrderItem(OrderItem item);
+	boolean updateOrderItem(OrderItem item);
+	boolean isOrderHasItem(Order order, OrderItem item);
 }

@@ -69,7 +69,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 		String hql = "from Customer where customerId = '" + customerId + "'";
 		System.out.println(hql);
 		Customer cus = (Customer) getCrtSession().createQuery(hql).uniqueResult();
-		System.out.println(cus);
+		//System.out.println(cus);
 		closeCrtSession();
 		return cus;
 	}

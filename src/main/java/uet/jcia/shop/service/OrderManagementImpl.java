@@ -1,50 +1,56 @@
 package uet.jcia.shop.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import uet.jcia.shop.is.OrderDAOImpl;
+import uet.jcia.shop.is.OrderItemDAOImpl;
 import uet.jcia.shop.is.entities.Order;
 import uet.jcia.shop.is.entities.OrderItem;
 
 
-@WebService
+@WebService(endpointInterface = "uet.jcia.shop.service.OrderManagement")
 public class OrderManagementImpl implements OrderManagement {
-
-	@Override
+	
+	private OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
+	private OrderItemDAOImpl orderItemDAOImpl = new OrderItemDAOImpl();
+	
+	
+	@WebMethod
 	public List<Order> getAllOrder() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDAOImpl.getAllOrder();
 	}
-
-	@Override
+	@WebMethod
 	public List<Order> getListOrderByCustomerId(int customerId) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDAOImpl.getListOrderByCustomerId(customerId) ;
 	}
+	@WebMethod
 
-	@Override
-	public List<OrderItem> getListOrderItemByOrderId(int orderId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderItem> getListOrderItemByOrderId(int orderId){
+		return orderItemDAOImpl.getOrderItemByOrderId(orderId);
 	}
-
-	@Override
+	@WebMethod
 	public Order getOrderById(int id) {
+		Order order =  orderDAOImpl.getOrderById(id);
+		System.out.println(order);
+		return order;
+	}
+	@WebMethod
+	public boolean deleteOrderById(int id) {
+		return orderDAOImpl.deleteOrder(id);
+	}
+	@WebMethod
+	public boolean updateOrder(int orderId, Order order) {
+		return orderDAOImpl.updateOrder(order);
+	}
+	@Override
+	public List<Order> getListOrderByDate(Date date) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean deleteOrderById(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean updateOrder(int orderId, Order order) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

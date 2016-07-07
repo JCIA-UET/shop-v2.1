@@ -24,13 +24,18 @@ public class TestProductDAO {
         
         /*System.out.println(dao.getProductById(1));*/
         
-        /*Category c = new Category();
+       /* Category c = new Category();
         c.setCategoryId(1);
         Product product = new Product(
                 20, 1, 100.0, "Lumia 920", "dien thoai nokia", "black",
                 "image", new Date(), new Date(), c);
         
-        dao.addNewProduct(product);*/
+        pDao.addNewProduct(product);
+        */
+        
+        Product p = pDao.getProductById(1);
+        p.setDescription("ckdjfoa");
+        pDao.updateProduct(p);
         
         /*Product p = new Product();
         p.setProductId(2);

@@ -1,6 +1,10 @@
 package uet.jcia.shop.is.entities;
+import java.io.Serializable;
 
-public class ProductSpecification {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class ProductSpecification implements Serializable{
     private Integer productSpecId;
  
     private String value;

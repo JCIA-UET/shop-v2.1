@@ -1,6 +1,12 @@
 package uet.jcia.shop.is.entities;
 
-public class Address {
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
+public class Address implements Serializable{
 	private Integer addressId;
 	private String firstName;
 	private String lastName;
@@ -51,6 +57,7 @@ public class Address {
 		this.address = address;
 	}
 	
+	@XmlTransient
 	public Customer getCustomer() {
         return customer;
     }

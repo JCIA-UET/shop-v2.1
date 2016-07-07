@@ -8,7 +8,7 @@ import uet.jcia.shop.is.entities.Specification;
 
 public interface ProductDAO {
 	List<Product> getAllProducts();
-	Product getProduct(Product product);
+	Product getProductById(Integer productId);
 	boolean addNewProduct(Product product);
 	boolean deleteProduct(Product product);
 	boolean updateProduct(Product product);

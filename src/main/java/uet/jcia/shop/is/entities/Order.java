@@ -2,8 +2,13 @@ package uet.jcia.shop.is.entities;
 
 import java.util.Date;
 import java.util.Set;
+import java.io.Serializable;
 
-public class Order {
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
+public class Order implements Serializable{
 	private Integer orderId;
 	private String firstName;
 	private String lastName;
@@ -50,6 +55,7 @@ public class Order {
 		this.dateModified = dateModified;
 	}
 	
+    @XmlTransient
 	public Set<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -138,6 +144,7 @@ public class Order {
 		this.dateModified = dateModified;
 	}
 	
+	@XmlTransient
 	public Customer getCustomer() {
         return customer;
     }

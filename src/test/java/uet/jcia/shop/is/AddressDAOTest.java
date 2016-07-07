@@ -22,15 +22,17 @@ public class AddressDAOTest {
 //		customerDAO.addNewCustomer(cus2);
 //		Set<Address> setAddress = new HashSet();
 		Customer cus1 = customerDAO.getCustomerById(30);
-		Customer cus2 = customerDAO.getCustomerById(31);
+		cus1.setEmail("asda@gmail.com");
+		customerDAO.updateCustomer(cus1);
+		//Customer cus2 = customerDAO.getCustomerById(31);
 		
-		Address add1 = addressDAO.getAddressById(46);
-		Address add2 = addressDAO.getAddressById(48);
-		Address add3 = new Address("c", "c", "c", cus1);
+		//Address add1 = addressDAO.getAddressById(46);
+		//Address add2 = addressDAO.getAddressById(48);
+		//Address add3 = new Address("c", "c", "c", cus1);
 		
 		//addressDAO.addNewAddress(add3);
-		System.out.println(cus1.getAddresses());
-		System.out.println(customerDAO.setDefaultAddress(cus1, add2));
+		//System.out.println(cus1.getAddresses());
+		//System.out.println(customerDAO.setDefaultAddress(cus1, add2));
 //		
 //		Address add1 = new Address("a", "a", "adasda", cus1);
 //		Address add2 = new Address("a", "a", "adasda", cus1);

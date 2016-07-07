@@ -1,6 +1,12 @@
 package uet.jcia.shop.is.entities;
 
-public class OrderItem {
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
+public class OrderItem implements Serializable{
 	private Integer orderItemId;
 	private String name;
 	private String model;
@@ -72,6 +78,7 @@ public class OrderItem {
 		this.total = total;
 	}
 	
+	@XmlTransient
 	public Order getOrder() {
         return order;
     }
@@ -80,6 +87,7 @@ public class OrderItem {
         this.order = order;
     }
 	
+	@XmlTransient
 	public Product getProduct() {
         return product;
     }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-
 import uet.jcia.shop.is.entities.Order;
 import uet.jcia.shop.is.entities.OrderItem;
 
@@ -22,44 +21,47 @@ public class OrderItemDAOImpl implements OrderItemDAO {
 			  
 			 result = (List<OrderItem>)session.createQuery(hql2).setParameter("order_id", order_id).list();
 			 session.getTransaction().commit();
-			 
+			 return result;
 		}
 		catch(HibernateException e){
 			e.printStackTrace();
 			session.getTransaction().rollback();
 			return null;
 		}	
-		finally{
-			
-				session.close();return result;
-			}
-		
-		
-		
-	
-					
+				
 	}
 
 	@Override
-	public boolean addNewOrderItem(OrderItemDAO item) {
+	public boolean addNewOrderItem(OrderItem item) {
+		Session session = HibernateUtils.getSessionFactory().openSession();
+		session.beginTransaction();
+		try{
+			session.save(item);
+			session.getTransaction().commit();
+			//session.close();
+			return true;
+		}
+		catch(HibernateException e){
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteOrderItem(OrderItem item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean deleteOrderItem(OrderItemDAO item) {
+	public boolean updateOrderItem(OrderItem item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean updateOrderItem(OrderItemDAO item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isOrderHasItem(Order order, OrderItemDAO item) {
+	public boolean isOrderHasItem(Order order, OrderItem item) {
 		// TODO Auto-generated method stub
 		return false;
 	}

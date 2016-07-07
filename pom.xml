@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.11.Final</version>
+			<version>4.2.21.Final</version>
 		</dependency>
 
 
@@ -52,7 +52,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+		
 		</plugins>
-
 	</build>
 </project>

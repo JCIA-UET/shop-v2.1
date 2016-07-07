@@ -1,12 +1,18 @@
 package uet.jcia.shop.is.entities;
 
 import java.util.Set;
+import java.io.Serializable;
 
-public class Specification {
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
+public class Specification implements Serializable{
     private Integer specId;
     private String name;
     private Set<ProductSpecification> productSpecs;
 
+    @XmlTransient
 	public Set<ProductSpecification> getProductSpecs() {
 		return productSpecs;
 	}
