@@ -40,7 +40,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public boolean addNewProduct(Product product) {
+    public boolean addProduct(Product product) {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
 

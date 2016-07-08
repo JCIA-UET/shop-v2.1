@@ -5,7 +5,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class ProductSpecification implements Serializable{
-    private Integer productSpecId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer productSpecId;
  
     private String value;
     private Product product;

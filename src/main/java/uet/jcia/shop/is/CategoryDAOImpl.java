@@ -25,11 +25,11 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public Category getCategory(Category category) {
+    public Category getCategoryById(Integer categoryId) {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         try {
             return (Category)session.get(
-                    Category.class, category.getCategoryId());
+                    Category.class, categoryId);
             
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public boolean addNewCategory(Category category) {
+    public boolean addCategory(Category category) {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
@@ -57,7 +57,7 @@ public class CategoryDAOImpl implements CategoryDAO {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {
-            Category c = getCategory(category);
+            Category c = getCategoryById(category.getCategoryId());
             session.delete(c);
             tx.commit();
             return true;

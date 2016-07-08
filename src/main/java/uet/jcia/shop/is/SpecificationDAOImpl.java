@@ -26,7 +26,7 @@ public class SpecificationDAOImpl implements SpecificationDAO {
     }
 
     @Override
-    public boolean addNewSpec(Specification spec) {
+    public boolean addSpec(Specification spec) {
         Session session =  HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         try {

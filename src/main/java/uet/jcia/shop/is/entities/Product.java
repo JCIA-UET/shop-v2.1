@@ -9,7 +9,11 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 public class Product implements Serializable{
-    private Integer productId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer productId;
     private Integer quantity;
     private Integer status;
     

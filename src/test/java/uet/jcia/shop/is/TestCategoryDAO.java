@@ -19,6 +19,9 @@ public class TestCategoryDAO {
             System.out.println(c.getProducts());
         }*/
         
+        /*Category c = dao.getCategoryById(1);
+        System.out.println(c);*/
+        
         // add category
         /*Category c = new Category(0, "Do gia dung", "Ban cac loai do gia dung");
         dao.addNewCategory(c);*/
