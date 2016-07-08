@@ -19,7 +19,7 @@ public class TestDAO {
 		
 		
 		OrderItemDAOImpl test = new OrderItemDAOImpl();
-		System.out.println(test.getOrderItemByOrderId(15));
+		System.out.println(test.getOrderItemByOrderId(1));
 		
 		HibernateUtils.closeSessionFactory();
 	}

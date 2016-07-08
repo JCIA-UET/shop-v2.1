@@ -49,6 +49,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	
 	public void closeCrtSession() {
 		crtTransaction.commit();
+		if(crtSession.isOpen())
 		crtSession.close();
 	}
 	

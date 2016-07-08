@@ -2,6 +2,7 @@ package uet.jcia.shop.is;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -45,6 +46,7 @@ public class AddressDAOImpl implements AddressDAO{
 	
 	public void closeCrtSession() {
 		crtTransaction.commit();
+		if(crtSession.isOpen())
 		crtSession.close();
 	}
 	
@@ -53,6 +55,13 @@ public class AddressDAOImpl implements AddressDAO{
 	public List<Address> getAllAddress() {
 		openCrtSessionAndTransaction();
 		List<Address> adds = (List<Address>) getCrtSession().createQuery("from Address").list();
+		if(adds == null) {
+			closeCrtSession();
+			return null;
+		}
+		for(Address address : adds ){
+			Hibernate.initialize(address.getCustomer());
+		}
 		closeCrtSession();
 		return adds;
 	}
