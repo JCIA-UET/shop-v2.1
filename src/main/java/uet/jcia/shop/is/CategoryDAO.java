@@ -7,8 +7,8 @@ import uet.jcia.shop.is.entities.Category;
 public interface CategoryDAO {
     
 	List<Category> getAllCategories();
-	Category getCategory(Category categoryId);
-	boolean addNewCategory(Category category);
+	Category getCategoryById(Integer categoryId);
+	boolean addCategory(Category category);
 	boolean deleteCategory(Category categoryId);
 	boolean updateCategory(Category category);
 }

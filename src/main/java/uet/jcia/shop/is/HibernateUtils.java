@@ -2,17 +2,22 @@ package uet.jcia.shop.is;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 public class HibernateUtils {
     
-    private static final Configuration configuration =
-            new Configuration().configure("/hibernate.cfg.xml");
-    private static SessionFactory sessionFactory;
-    
-    @SuppressWarnings("deprecation")
+    private static SessionFactory sessionFactory = buildSessionFactory();
+
 	public static SessionFactory buildSessionFactory() {
-        sessionFactory = configuration.buildSessionFactory();
-        return sessionFactory;
+    	if (sessionFactory == null) {
+    		Configuration configuration = new Configuration().configure();
+        	ServiceRegistryBuilder registry = new ServiceRegistryBuilder();
+        	registry.applySettings(configuration.getProperties());
+        	ServiceRegistry serviceRegistry = registry.buildServiceRegistry();
+        	sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    	}
+    	return sessionFactory;
     }
     
     public static SessionFactory getSessionFactory() {

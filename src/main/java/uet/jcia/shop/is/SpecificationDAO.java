@@ -9,7 +9,7 @@ public interface SpecificationDAO {
     
     List<Specification> getAllSpecs();
     Specification getSpec(Specification spec);
-	boolean addNewSpec(Specification spec);
+	boolean addSpec(Specification spec);
 	boolean deleteSpec(Specification spec);
 	boolean updateSpec(Specification spec);
 }
